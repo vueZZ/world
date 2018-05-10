@@ -1,0 +1,100 @@
+<template>
+  <div class="plate">
+    <div class="plate_head">
+      <div class="plate_title">游戏评测</div>
+      <div class="plate_keyword">
+        <li class="plate_keyword_item" v-for="n in 4" :key="n">
+          <nuxt-link to="/" class="plate_keyword_item">新游资讯</nuxt-link>
+        </li>
+      </div>
+      <nuxt-link to="/" class="plate_more">更多+</nuxt-link>
+    </div>
+    <div class="plate_content">
+      <nuxt-link to="/" class="plate_content_item" v-for="n in 4" :key="n">
+        <b class="mark-review-5"></b>
+        <div class="plate_content_item_intro">
+          《荒野行动》飓风评测：持鱼叉下海争当水下蛟龙 扛88式爬管智斗伏楼顶魔
+        </div>
+      </nuxt-link>
+    </div>
+  </div>
+</template>
+
+<style lang="scss">
+.plate{
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 24px;
+  width: 1180px;
+  margin: auto;
+  &_head{
+    position: relative;
+    overflow: hidden;
+    line-height: 30px;
+    margin-bottom: 28px;
+  }
+  &_title{
+    float: left;
+    border-left: 4px #ea2f2f solid;
+    padding-left: 10px;
+    margin-right: 20px;
+    color: #333;
+    font-weight: bold;
+    font-size: 24px;
+  }
+  &_keyword{
+    float: left;
+    display: flex;
+    &_item{
+      color: #888;
+      &:not(:last-child)::after{
+        content: '|';
+        display: inline-block;
+        width: 20px;
+        text-align: center;
+      }
+    }
+  }
+  &_more{
+    float: right;
+    font-size: 14px;
+    display: block;
+    color: #888;
+    &::before{
+      content: '';
+      position: absolute;
+      border-top:1px solid #ccc;
+      width: 430px;
+      right: 50px;
+      top: 50%;
+    }
+  }
+  &_content{
+    display: flex;
+    flex-direction: row;
+    &_item{
+      position: relative;
+      flex: 1;
+      height: 360px;
+      color: #fff;
+      background: url('../../../assets/img/item_bag.jpg');
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-size: cover;
+      &:not(:last-child){
+        margin-right: 20px;
+      }
+      &_intro{
+        position: absolute;
+        z-index: 10;
+        bottom: 0;
+        width: 100%;
+        padding: 15px 18px 10px;
+        box-sizing: border-box;
+        background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(0,0,0,0.15)), to(rgba(0,0,0,1)));
+      }
+    }
+  }
+}
+</style>
+
