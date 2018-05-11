@@ -29,6 +29,9 @@ module.exports = {
     /*
     ** Run ESLint on save
     */
+    vendor: [
+      '~/plugins/utils.js'
+    ],
     extend (config, { isDev, isClient }) {
       if (isDev && isClient) {
         config.module.rules.push({
@@ -43,5 +46,8 @@ module.exports = {
       scss: ['./assets/styles/variable.scss','./assets/styles/mixin.scss'],
       options: {}
     }
-  }
+  },
+  plugins: [
+    '~/plugins/utils.js'
+  ]
 }

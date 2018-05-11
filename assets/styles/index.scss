@@ -16,8 +16,17 @@ html {
   color: #333;
   background-color: #f8f8f8;
 }
-.nuxt-link-exact-active{
+.nuxt-link-active{
   &:hover{
     color: red;
   }
+}
+
+
+.plate{ //展示版块设置
+  position: relative;
+  overflow: hidden;
+  max-width: 1180px;
+  margin: auto;
+  margin-bottom: 24px;
 }

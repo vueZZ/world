@@ -16,11 +16,13 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .main{
+  min-height: 100vh;
   overflow: hidden;
-  margin-top: 60px;
-  margin-bottom: 100px;
+  padding-top: 60px;
+  padding-bottom: 100px;
+  box-sizing: border-box;
 }
 </style>
 

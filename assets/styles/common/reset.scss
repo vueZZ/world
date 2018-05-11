@@ -25,6 +25,7 @@ li {
 
 a,button {
   cursor: pointer;
+  color: inherit;
 }
 
 h1,h2,h3,h4,h5,h6,em,strong,b {
@@ -33,6 +34,10 @@ h1,h2,h3,h4,h5,h6,em,strong,b {
 
 del,ins,u,s,a,a:hover {
   text-decoration: none;
+}
+
+input:focus, button:focus {
+    outline: none;
 }
 
 // /* 去除input=number的箭头 */

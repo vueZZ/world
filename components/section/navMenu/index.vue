@@ -9,16 +9,33 @@
       </ul>
       <!-- <nuxt-link to="/about" class="iconfont icon-weixin nav-menu_me"></nuxt-link> -->
       <div class="nav-menu_search">
-        <input type="text" class="nav-menu_search_input" placeholder="请输入关键词">
-        <nuxt-link to="/search" class="iconfont icon-suosou nav-menu_search_icon"></nuxt-link>
+        <input type="text" class="nav-menu_search_input" placeholder="请输入关键词" ref="search">
+        <i class="iconfont icon-suosou nav-menu_search_icon" @click="handleSearch()"></i>
       </div>
     </div>
   </div>
 </template>
 
+<script>
+export default {
+  methods: {
+    handleSearch () {
+      let q = this.$refs.search.value
+      if (q) {
+        this.$router.push(`/search/${q}`)
+      } else {
+        alert('请输入值')
+      }
+    }
+  }
+}
+</script>
+
+
 <style lang="scss">
 .nav-menu{
   position: fixed;
+  z-index: 999;
   top: 0;
   width: 100%;
   background: #242424;
@@ -73,6 +90,7 @@
       font-size: 24px;
       line-height: 30px;
       color: #e62e2e;
+      cursor: pointer;
     }
   }
   &_me{

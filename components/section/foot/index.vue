@@ -1,7 +1,7 @@
 <template>
   <div class="foot">
     <div class="foot_content">
-      <div class="foot_hello">天行健，君子以自强不息</div>
+      <div class="foot_word"></div>
     </div>
   </div>
 </template>
@@ -9,6 +9,7 @@
 <style lang="scss">
   .foot{
     position: absolute;
+    z-index: 999;
     bottom: 0;
     width: 100%;
     color: #999;
@@ -18,9 +19,12 @@
       margin: 0 auto;
       padding: 20px 0;
     }
-    &_hello{
-      width: 100%;
-      text-align: center;
+    &_word{
+      width: 700px;
+      height: 40px;
+      margin: auto;
+      background-image: url('~/assets/img/foot.png');
+      background-size: 100% 100%;
     }
   }
 </style>

@@ -10,23 +10,27 @@
       <nuxt-link to="/" class="plate_more">更多+</nuxt-link>
     </div>
     <div class="plate_content">
-      <nuxt-link to="/" class="plate_content_item" v-for="n in 4" :key="n">
-        <b class="mark-review-5"></b>
+      <nuxt-link to="/" class="plate_content_item" v-for="(item,index) in data" :key="index" :style="{backgroundImage: 'url('+ '/img/' + item.img + ')'}">
+        <b class="mark-review-5" :class="`mark-review-${item.review}`"></b>
         <div class="plate_content_item_intro">
-          《荒野行动》飓风评测：持鱼叉下海争当水下蛟龙 扛88式爬管智斗伏楼顶魔
+          {{ item.title }}
         </div>
       </nuxt-link>
     </div>
   </div>
 </template>
 
+<script>
+export default {
+  props: {
+    data:Array
+  }
+}
+</script>
+
+
 <style lang="scss">
 .plate{
-  position: relative;
-  overflow: hidden;
-  margin-bottom: 24px;
-  width: 1180px;
-  margin: auto;
   &_head{
     position: relative;
     overflow: hidden;
@@ -72,17 +76,19 @@
   &_content{
     display: flex;
     flex-direction: row;
+    flex-wrap: wrap;
     &_item{
       position: relative;
-      flex: 1;
+      width: 22%;
       height: 360px;
       color: #fff;
-      background: url('../../../assets/img/item_bag.jpg');
+      background: url('/img/item_bag.jpg');
       background-position: center center;
       background-repeat: no-repeat;
       background-size: cover;
-      &:not(:last-child){
-        margin-right: 20px;
+      &:not(:nth-child(4n)){
+        margin-right: 4%;
+        margin-bottom: 20px;
       }
       &_intro{
         position: absolute;
