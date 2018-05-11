@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  function testArgument(a){
+    	a = 20
+      console.log(arguments)
+    	console.log(arguments[0])
+      console.log(a)
+    	arguments[0] = 10
+      console.log(arguments[0])
+    	console.log(a)
+    }
+    testArgument(2)
+    console.log(Object.prototype)
+    var foo = function(){
+    var name = {
+      name: 'zz'
+    }
+    return function inner(){
+        console.log( name.name );
+    }
+}
+var bar = foo();//这里虽然得到的是函数inner的引用，而不是那一坨代码
+bar();//这里开始执行inner函数，回头看看上面加粗的那句话
+</script>
+</html>

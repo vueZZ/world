@@ -30,6 +30,7 @@ module.exports = {
     ** Run ESLint on save
     */
     vendor: [
+      'babel-polyfill',
       '~/plugins/utils.js'
     ],
     extend (config, { isDev, isClient }) {

@@ -23,7 +23,7 @@
       width: 700px;
       height: 40px;
       margin: auto;
-      background-image: url('~/assets/img/foot.png');
+      background-image: url('/img/foot.png');
       background-size: 100% 100%;
     }
   }
