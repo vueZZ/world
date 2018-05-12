@@ -15,8 +15,8 @@ module.exports = {
     ],
   },
   css:[
-    'assets/fonts/iconfont.css',
-    'assets/styles/index.scss'
+    '~/assets/fonts/iconfont.css',
+    '~/assets/styles/index.scss'
   ],
   /*
   ** Customize the progress bar color
@@ -29,6 +29,9 @@ module.exports = {
     /*
     ** Run ESLint on save
     */
+    filenames: {
+      app: 'app.[chunkhash].js'
+    },
     vendor: [
       'babel-polyfill',
       '~/plugins/utils.js'
@@ -44,7 +47,7 @@ module.exports = {
       }
     },
     styleResources: {
-      scss: ['./assets/styles/variable.scss','./assets/styles/mixin.scss'],
+      scss: ['~/assets/styles/variable.scss','~/assets/styles/mixin.scss'],
       options: {}
     }
   },

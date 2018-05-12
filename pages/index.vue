@@ -126,15 +126,17 @@ export default {
       this.$utils.throttle(vm.init(vm.initSwiper), 4000)
     },
     loadContent () {
-      let vm = this
-      this.$refs.more.innerHTML = '努力加载中'
-      setTimeout(() => {
-        vm.gameLists.push(...this.addLists)
-        // vm.$nextTick(() => { // 移动到新页第一个
-        //   window.scrollTo(window.pageXOffset, window.pageYOffset + 2500)
-        // })
-        vm.$refs.more.innerHTML = '加载更多'
-      }, 1200);
+      console.log(this)
+      this.$toast('我是弹出消息')
+      // let vm = this
+      // this.$refs.more.innerHTML = '努力加载中'
+      // setTimeout(() => {
+      //   vm.gameLists.push(...this.addLists)
+      //   // vm.$nextTick(() => { // 移动到新页第一个
+      //   //   window.scrollTo(window.pageXOffset, window.pageYOffset + 2500)
+      //   // })
+      //   vm.$refs.more.innerHTML = '加载更多'
+      // }, 1200);
     }
   }
 }

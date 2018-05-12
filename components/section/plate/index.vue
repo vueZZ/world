@@ -1,5 +1,6 @@
 <template>
   <div class="plate">
+    <ElAlert></ElAlert>
     <div class="plate_head">
       <div class="plate_title">游戏评测</div>
       <div class="plate_keyword">
@@ -23,7 +24,12 @@
 <script>
 export default {
   props: {
-    data:Array
+    data:{
+      type:Array,
+      default () {
+        return []
+      }
+    }
   }
 }
 </script>
