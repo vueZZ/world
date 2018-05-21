@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+  // 函数内部可以直接读取全局变量，但是在函数外部无法读取函数内部的局部变量
+  let d = 'd'
+function a(){
+  console.log(d)
+    let n = 0;
+    function say(params) {
+      console.log('say')
+    }
+    this.inc = function () {
+        n++; 
+        say()
+        console.log(n);
+    };
+}
+var c = new a();
+c.inc();    //控制台输出1
+c.inc();    //控制台输出2
+</script>
+</html>

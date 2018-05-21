@@ -6,6 +6,7 @@
         <nuxt-link to="/" class="nav-menu_item">首页</nuxt-link>
         <nuxt-link to="/article" class="nav-menu_item">文章</nuxt-link>
         <nuxt-link to="/demo" class="nav-menu_item">demo</nuxt-link>
+        <nuxt-link to="/test" class="nav-menu_item">测试</nuxt-link>
       </ul>
       <!-- <nuxt-link to="/about" class="iconfont icon-weixin nav-menu_me"></nuxt-link> -->
       <div class="nav-menu_search">

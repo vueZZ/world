@@ -20,7 +20,8 @@
   },
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "nuxt": "^1.4.0"
+    "nuxt": "^1.4.0",
+    "rgbaster": "^1.0.0"
   },
   "devDependencies": {
     "babel-eslint": "^8.2.1",

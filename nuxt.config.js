@@ -47,7 +47,7 @@ module.exports = {
       }
     },
     styleResources: {
-      scss: ['~/assets/styles/variable.scss','~/assets/styles/mixin.scss'],
+      scss: ['./assets/styles/variable.scss','./assets/styles/mixin.scss'],
       options: {}
     }
   },

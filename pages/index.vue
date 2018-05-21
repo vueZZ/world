@@ -126,8 +126,9 @@ export default {
       this.$utils.throttle(vm.init(vm.initSwiper), 4000)
     },
     loadContent () {
-      console.log(this)
-      this.$toast('我是弹出消息')
+      this.$message('s')
+      // console.log(this)
+      // this.$toast('我是弹出消息')
       // let vm = this
       // this.$refs.more.innerHTML = '努力加载中'
       // setTimeout(() => {

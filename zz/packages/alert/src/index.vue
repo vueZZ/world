@@ -6,7 +6,7 @@
 
 <script>
 export default {
-  name: 'ElAlert'
+  name: 'zz-alert'
 }
 </script>
 

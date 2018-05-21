@@ -1,6 +1,5 @@
 <template>
   <div class="plate">
-    <ElAlert></ElAlert>
     <div class="plate_head">
       <div class="plate_title">游戏评测</div>
       <div class="plate_keyword">

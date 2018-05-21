@@ -1,6 +1,24 @@
 <template>
-  <div class="wrap" v-if="showWrap" :class="showContent ?'fadein':'fadeout'">{{text}}</div>
+  <!-- <div class="wrap" v-if="showWrap" :class="showContent ?'fadein':'fadeout'"> -->
+  <div class="wrap">
+    <h2>title</h2>
+    <h3>{{ message }}</h3>
+  </div>
 </template>
+
+<script>
+export default {
+  name:'zz-toast',
+  mounted () {
+    console.log(this)
+    setTimeout(() => {
+      let dom = document.querySelector('.wrap')
+      dom.style.display = 'none'
+    }, 2000)
+  }
+}
+</script>
+
 
 <style scoped>
   .wrap{

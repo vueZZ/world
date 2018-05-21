@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .wrap{
+      width: 100px;
+      height: 100px;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap" id="t2">
+    <li id="t1">li1</li>
+  </div>
+</body>
+<script>
+  let a = document.getElementById('t1')
+  let b = document.getElementById('t2')
+  a.addEventListener('click', function() {
+    console.log('li')
+    console.log(this)
+  },false)
+  b.addEventListener('click', function(e) {
+    console.log('father')
+    console.log(e)
+    console.log(this)
+  },false)
+</script>
+</html>

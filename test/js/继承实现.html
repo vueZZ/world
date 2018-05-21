@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+
+// 定义一个动物类
+function Animal (name) {
+  // 属性
+  this.name = name || 'Animal';
+  // 实例方法
+  this.sleep = function(){
+    return this.name + '正在睡觉！'
+    console.log();
+  }
+}
+// 原型方法
+Animal.prototype.eat = function(food) {
+  return this.name + '正在吃：' + food
+};
+
+
+// function Cat(){ 
+// }
+// Cat.prototype = new Animal();
+// Cat.prototype.name = 'cat';
+// Cat.a = 'a'
+// //　Test Code
+// var cat = new Cat('s');
+// console.log(cat)
+// console.log(cat.name);
+// console.log(cat.eat('fish'));
+// console.log(cat.sleep());
+// console.log(cat instanceof Animal); //true 
+// console.log(cat instanceof Cat); //true
+
+function Cat(name){
+  Animal.call(this);
+  this.name = name || 'Tom';
+}
+Cat.prototype = new Animal();
+let a = new Cat('s')
+console.log(a)
+
+class father {
+  constructor(name){
+    this.name = name || 'a'
+  }
+  say () {
+    console.log(this.name)
+  }
+}
+  class dog  extends father{
+    constructor(name = 'dog'){ 
+      super(name);
+      this.name = 'dog' + name
+    }
+    // super(name){
+    //   this.name = name
+    // }
+    // show () {
+    //   console.log(this.name)
+    // }
+  }
+  let d = new dog('d')
+  father.prototype.type = 'father'
+  father.prototype.say = function (params) {
+    console.log('s')
+  }
+  console.log(d)
+  d.say()
+  console.log(d.name)
+  for (const key in d) {
+    console.log(key)
+    // if (object.hasOwnProperty(key)) {
+    //   const element = object[key];
+      
+    // }
+  }
+</script>
+</html>
