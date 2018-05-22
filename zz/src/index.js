@@ -1,11 +1,13 @@
 import Alert from '../packages/alert/index.js'
 import Message from '../packages/message/index.js'
 import Pagination from '../packages/pagination/index.js'
+import Carousel from '../packages/carousel/index.js'
 
 const components = [
   Alert,
   Message,
-  Pagination
+  Pagination,
+  Carousel
 ]
 
 const install = function(Vue, opts = {}) {
