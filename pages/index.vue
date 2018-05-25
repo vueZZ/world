@@ -3,17 +3,21 @@
     <section class="wallpaper">
       <img src="/img/home_bag.jpg" class="wallpaper_bag" alt="">
       <div class="wallpaper_content plate">
-        <div class="wallpaper_main" ref="swiper" :data-index="nowBag">
-          <div class="wallpaper_main_img" :style="{backgroundImage: 'url('+ imgUrl + bagLists[nowBag].img + ')'}"></div>
-          <div class="wallpaper_main_intro">
-            <nuxt-link to="/" class="wallpaper_main_intro_title" :title="bagLists[nowBag].title">{{ bagLists[nowBag].title }}</nuxt-link>
-            <div class="wallpaper_main_intro_content">
-              {{ bagLists[nowBag].intro }}
+        <zz-carousel class="wallpaper_main" ref="carousel" @change="changeNowBag">
+          <zz-carousel-item class="wallpaper_main" v-for="(item,index) in bagLists" :key="index">
+            <div class="wallpaper_main_img" :style="{backgroundImage: 'url('+ imgUrl + item.img + ')'}"></div>
+            <div class="wallpaper_main_intro">
+              <nuxt-link to="/" class="wallpaper_main_intro_title" :title="item.title">{{ item.title }}</nuxt-link>
+              <div class="wallpaper_main_intro_content">
+                {{ item.intro }}
+              </div>
             </div>
-          </div>
-        </div>
+          </zz-carousel-item>
+        </zz-carousel>
         <div class="wallpaper_foot">
-          <li class="wallpaper_foot_item" v-for="(item,index) in bagLists" :key="index" v-if="index<4" :title="item.title_little" :class="{active:nowBag===index}" :style="{backgroundImage:'url('+imgUrl +item.img_little+')'}" @click="checkBag(index)">
+          <li class="wallpaper_foot_item" v-for="(item,index) in bagLists" :key="index" v-if="index<4" :title="item.title_little" :class="{active:nowBag===index}" 
+            :style="{backgroundImage:'url('+imgUrl +item.img_little+')'}" @click="checkBag(index)"
+          >
             <div class="wallpaper_foot_item_title">{{ item.title_little }}</div>
             <div class="wallpaper_foot_item_border"></div>
           </li>
@@ -34,7 +38,6 @@ import { mapState } from 'vuex'
 export default {
   data () {
     return {
-      nowBag: 0,
       bagLists:[
         {
           id:'1001',
@@ -91,6 +94,7 @@ export default {
           img:'item_bag.jpg'
         }
       ],
+      nowBag: 0,
       addLists: []
     }
   },
@@ -103,27 +107,29 @@ export default {
     plate
   },
   created () {
-    this.addLists = this.addLists.concat(this.gameLists)
-    this.init(this.initSwiper)
   },
   methods: {
-    // TODO:轮播效果
-    init (method, time=2000) {
-      method.tId = setInterval(function () {
-        method()
-      }, time)
+    // // TODO:轮播效果
+    // init (method, time=2000) {
+    //   method.tId = setInterval(function () {
+    //     method()
+    //   }, time)
+    // },
+    // initSwiper () {
+    //   let vm = this
+    //   vm.nowBag = vm.nowBag>=3 ? 0 : vm.nowBag+1
+    // },
+    checkBag(index) {
+      this.$refs.carousel.setActiveIndex(index)
+      // if (this.initSwiper.hasOwnProperty('tId')) {
+      //   clearInterval(this.initSwiper.tId)
+      // }
+      // let vm = this
+      // this.nowBag = n
+      // this.$utils.throttle(vm.init(vm.initSwiper), 4000)
     },
-    initSwiper () {
-      let vm = this
-      vm.nowBag = vm.nowBag>=3 ? 0 : vm.nowBag+1
-    },
-    checkBag(n) {
-      if (this.initSwiper.hasOwnProperty('tId')) {
-        clearInterval(this.initSwiper.tId)
-      }
-      let vm = this
-      this.nowBag = n
-      this.$utils.throttle(vm.init(vm.initSwiper), 4000)
+    changeNowBag (value,oldValue) {
+      this.nowBag = value
     },
     loadContent () {
       this.$message('s')

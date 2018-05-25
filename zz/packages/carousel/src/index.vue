@@ -1,68 +1,84 @@
 <template>
   <div class="zz-carousel">
-    <div class="zz-carousel_container" :style="containerStyle">
-      <li>
-        <img :src="imgLists[imgLists.length - 1].img" alt="" class="zz-carousel_item">
-      </li>
-      <li v-for="(item,index) in imgLists" :key="index">
-        <img :src="item.img" alt="" class="zz-carousel_item">
-      </li>
-      <li>
-        <img :src="imgLists[0].img" alt="" class="zz-carousel_item">
-      </li>
+    <div class="zz-carousel_container">
+      <slot></slot>
     </div>
     <div class="zz-carousel_indicators">
-      <span class="zz-carousel_indicator" v-for="n in imgLists.length" :key="n" :class="{active:currentIndex === n}"></span>
+      <span class="zz-carousel_indicator" v-for="(item,index) in items" :key="index" :class="{active:index === activeIndex}"
+        @click="handleIndicatorClick(index)"
+      >
+      </span>
     </div>
-    <button class="zz-carousel_left" @click="prev">上一个</button>
-    <button class="zz-carousel_right" @click="next">下一个</button>
   </div>
 </template>
 
 <script>
+import zzCarouselItem from './item'
 export default {
   name:'zz-carousel',
   data () {
     return {
-      imgLists:[
-        {img:'http://www.appgame.com/wp-content/uploads/2018/05/201805151240441_gaitubao_com_876x293.jpg'},
-        {img:'http://www.appgame.com/wp-content/uploads/2018/05/876x294-2.jpg'},
-        {img:'http://www.appgame.com/wp-content/uploads/2018/05/876x294-2.jpg'},
-        {img:'http://www.appgame.com/wp-content/uploads/2018/05/876x294-2.jpg'},
-        {img:'http://www.appgame.com/wp-content/uploads/2018/05/876x294-2.jpg'},
-      ],
-      // width:600,
-      distance:-600,
-      currentIndex:1
+      activeIndex:0,
+      items: []
     }
   },
-  mounted() {
-    // this.init()
-  },
-  computed:{
-    containerStyle() {
-      return {
-        transform:`translate3d(${this.distance}px, 0, 0)`
-      }
-    },
-    interval() {
-      return this.initialInterval * 1000
+  props: {
+    initialIndex:{
+      type:Number,
+      default:0
     }
+  },
+  watch: {
+    activeIndex(val, oldVal) {
+      this.resetItemPosition();  // 重置子项的位置
+      this.$emit('change', val, oldVal);  // 发送change事件
+    }
+  },
+  components: {
+    zzCarouselItem
+  },
+  created () {
+    if (this.initialIndex < this.items.length && this.initialIndex >= 0) {
+      // 如果初始化的索引有效，则将当前页设置为初始的索引
+      this.activeIndex = this.initialIndex;
+    }
+    this.$nextTick().then(() => {
+      this.updateItems();
+      this.resetItemPosition()
+    })
   },
   methods: {
     prev () {
-      this.move(600, 1)
+      this.setActiveIndex(this.activeIndex - 1)
     },
     next () {
-      this.move(600, -1)
+      this.setActiveIndex(this.activeIndex + 1)
     },
-    move(offset, direction) {
-      this.currentIndex = this.currentIndex - direction
-      this.distance = this.distance + offset * direction
-      if (this.distance < -3000) this.distance = -600
-      if (this.distance > -600) this.distance = -3000
-      if (this.currentIndex > 5) this.currentIndex = 1
-      if (this.currentIndex < 1) this.currentIndex = 5
+    handleIndicatorClick (index) {
+      this.setActiveIndex(index)
+    },
+    updateItems() {
+      this.items = this.$children.filter(child => child.$options.name === 'zz-carousel-item');
+      // TODO:'offsetWidth' of undefined
+      let offsetWidth = this.$root.$el.offsetWidth
+      this.items.forEach(item => {
+        item.parentWidth = 1180
+      });
+    },
+    resetItemPosition () {
+      this.items.forEach((item, index) => {
+        item.translateItem(index, this.activeIndex);
+      })
+    },
+    setActiveIndex (index) {
+      let length = this.items.length
+      if (index < 0) {  // 如果索引小于0，设置当前页为最后一页
+        this.activeIndex = length - 1;
+      } else if (index >= length) {  // 如果索引大于长度，设置当前页为第一页
+        this.activeIndex = 0;
+      } else {  // 否则设置为索引页
+        this.activeIndex = index;
+      }
     }
   }
 }
@@ -71,20 +87,12 @@ export default {
 <style lang="scss">
 .zz-carousel{
   position: relative;
-  width: 600px;
-  height: 400px;
-  margin: 0 auto;
   overflow: hidden;
   &_container{
-    position: absolute;
+    position: relative;
     display: flex;
-    animation: move 5s linear infinite;
-  }
-  &_item{
-    display: inline-block;
-    width: 600px;
-    height: 400px;
-    background: cyan;
+    width: 100%;
+    height: 100%;
   }
   &_left,&_right{
     position: absolute;
@@ -120,14 +128,6 @@ export default {
     cursor: pointer;
     &.active{
       background-color:orange;
-    }
-  }
-  @keyframes move {
-    0%{
-      transform: translate(0px,0);
-    }
-    100% {
-      transform: translate(-600px,0);
     }
   }
 }
