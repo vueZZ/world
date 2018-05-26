@@ -91,6 +91,22 @@ export default {
       background-position: center center;
       background-repeat: no-repeat;
       background-size: cover;
+      overflow: hidden;
+      &::after{
+        content: '';
+        display: block;
+        width: 100%;
+        height: 4px;
+        background: #ea2f2f;
+        position: absolute;
+        bottom: 0;
+        z-index: 20;
+        transition: all linear 0.4s;
+        left: -100%;
+      }
+      &:hover::after{
+        left: 0;
+      }
       &:not(:nth-child(4n)){
         margin-right: 4%;
         margin-bottom: 20px;
