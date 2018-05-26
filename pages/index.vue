@@ -95,7 +95,28 @@ export default {
         }
       ],
       nowBag: 0,
-      addLists: []
+      addLists: [
+        {
+          title:'《荒野行动》飓风评测：持鱼叉下海争当水下蛟龙 扛88式爬管智斗伏楼顶魔',
+          review: 5,
+          img:'item_bag.jpg'
+        },
+        {
+          title:'《荒野行动》飓风评测：持鱼叉下海争当水下蛟龙 扛88式爬管智斗伏楼顶魔',
+          review: 5,
+          img:'item_bag.jpg'
+        },
+        {
+          title:'《荒野行动》飓风评测：持鱼叉下海争当水下蛟龙 扛88式爬管智斗伏楼顶魔',
+          review: 5,
+          img:'item_bag.jpg'
+        },
+        {
+          title:'《荒野行动》飓风评测：持鱼叉下海争当水下蛟龙 扛88式爬管智斗伏楼顶魔',
+          review: 4,
+          img:'item_bag.jpg'
+        }
+      ]
     }
   },
   computed: {
@@ -107,6 +128,10 @@ export default {
     plate
   },
   created () {
+    // TODO:一个值等于另一值初始值
+    // if (this.addLists.length === 0) {
+    //   this.addLists = this.gameLists
+    // }
   },
   methods: {
     // // TODO:轮播效果
@@ -132,18 +157,18 @@ export default {
       this.nowBag = value
     },
     loadContent () {
-      this.$message('s')
-      // console.log(this)
-      // this.$toast('我是弹出消息')
-      // let vm = this
-      // this.$refs.more.innerHTML = '努力加载中'
-      // setTimeout(() => {
-      //   vm.gameLists.push(...this.addLists)
-      //   // vm.$nextTick(() => { // 移动到新页第一个
-      //   //   window.scrollTo(window.pageXOffset, window.pageYOffset + 2500)
-      //   // })
-      //   vm.$refs.more.innerHTML = '加载更多'
-      // }, 1200);
+      let vm = this
+      this.$refs.more.innerHTML = '努力加载中'
+      setTimeout(() => {
+        vm.gameLists.push(...this.addLists)
+        // vm.$nextTick(() => { // 移动到新页第一个
+        //   window.scrollTo(window.pageXOffset, window.pageYOffset + 2500)
+        // })
+        vm.$refs.more.innerHTML = '加载更多'
+      }, 1200);
+      setTimeout(() => {
+        console.log(vm.gameLists)
+      }, 3000);
     }
   }
 }
