@@ -19,7 +19,9 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "axios": "^0.18.0",
     "babel-polyfill": "^6.26.0",
+    "element-ui": "^2.4.1",
     "nuxt": "^1.4.0",
     "rgbaster": "^1.0.0"
   },
