@@ -1,7 +1,7 @@
 # world
 
 > Nuxt.js project
-> 个人网站
+> 个人网站ssr
 
 ## Build Setup
 
