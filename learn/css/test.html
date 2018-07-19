@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<body>
+  
+</body>
+<script>
+//   let add = (a, b) => {
+//     return a + b
+//   }
+//   let a = ((a, b) => {
+//     console.log(1)
+//   })
+// //   class r {
+// //     a(a, b) {
+
+// //     }
+// //   }
+// //   let b = new r()
+// // let n = b.add(1,2)
+// // console.log(n)
+// function foo(...args) {
+//   console.log(args);
+// }
+// let obj = {
+//   name: 'zz',
+//   age: '24'
+// }
+// foo(obj)
+let array = []
+console.time('r')
+let obj = {
+  name: 'zz',
+  value: 0
+}
+const a = JSON.parse(JSON.stringify(obj))
+for (let i = 0; i < 100000; i++) {
+  array[i] = a
+  obj['name' + i] = 'yy'
+}
+console.log(array)
+
+console.time('t')
+let i = 0
+// // for (let index = 0; index < array.length; index++) {
+// //   i++
+// // } 1ms
+// for (let n in obj) { // 20ms
+//   i++
+//   console.log(n)
+// }
+// array.forEach(e => { // 3ms
+//   i++
+// })
+// for (let item of array) {
+//   // console.log(item)
+//   i++
+// }
+// Object.keys(obj).forEach(e)
+// let s = Object.keys(obj)
+Object.keys(obj).forEach(key => { // 49ms
+  i++
+  // console.log(obj[key])
+});
+// for (const key in obj) { // 47ms
+//   if (obj.hasOwnProperty(key)) {
+//     i++
+//   }
+// }
+console.log(i)
+console.timeEnd('t')
+// 数组：forEach, forof, for 
+// 数组遍历其他方法：map
+// 对象：forin
+class Student {
+  constructor() {
+    console.log("I'm a student.");
+  }
+ 
+  study() {
+    console.log('study!');
+  }
+ 
+  static read() {
+    console.log("Reading Now.");
+  }
+}
+ 
+console.log(typeof Student); // function
+let stu = new Student(); // "I'm a student."
+console.log(stu)
+console.log(Student)
+Student.study(); // "study!"
+Student.read(); // "Reading Now."
+
+</script>
+</html>
