@@ -60,7 +60,7 @@ export default {
     updateItems() {
       this.items = this.$children.filter(child => child.$options.name === 'zz-carousel-item');
       // TODO:'offsetWidth' of undefined
-      let offsetWidth = this.$root.$el.offsetWidth
+      let offsetWidth = this.$el.offsetWidth
       this.items.forEach(item => {
         item.parentWidth = 1180
       });
